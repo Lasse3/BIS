@@ -1,14 +1,14 @@
-  int sensor_thumb = ;
-  int sensor_index = ;
-  int sensor_fuck = ;
-  int sensor_ring = ;
-  int sensor_pinky = ;
+  int sensor_thumb = 0;
+  int sensor_index = 1;
+  int sensor_fuck = 2;
+  int sensor_ring = 3;
+  int sensor_pinky = 4;
   
-  int servo_thumb = ;
-  int servo_index = ;
-  int servo_fuck = ;
-  int servo_ring = ;
-  int servo_pinky = ;
+  int servo_thumb = 3;
+  int servo_index = 5;
+  int servo_fuck = 6;
+  int servo_ring = 9;
+  int servo_pinky = 10;
   
 void setup() {
   // put your setup code here, to run once:
