@@ -11,7 +11,8 @@
   int servo_pinky = 10;
   
 void setup() {
-  // put your setup code here, to run once:
+
+  //  Declare the servo pins as outputs:
   pinMode(servo_thumb, OUTPUT);
   pinMode(servo_index, OUTPUT);
   pinMode(servo_fuck, OUTPUT);
@@ -27,31 +28,54 @@ void loop() {
   int val_ring = 0;
   int val_pinky = 0;
 
-  // put your main code here, to run repeatedly:
   val_thumb = analogRead(sensor_thumb);
   val_index = analogRead(sensor_index);
   val_fuck = analogRead(sensor_fuck);
   val_ring = analogRead(sensor_ring);
   val_pinky = analogRead(sensor_pinky); 
-
-  Serial.println("Thumb");
+/*
+  Serial.println("Thumb:");
   Serial.println(val_thumb);
-  Serial.println("index");
+  Serial.println("index:");
   Serial.println(val_index);
-  Serial.println("fuck");
+  Serial.println("fuck:");
   Serial.println(val_fuck);
-  Serial.println("ring");
+  Serial.println("ring:");
   Serial.println(val_ring);
-  Serial.println("pinky");
+  Serial.println("pinky:");
   Serial.println(val_pinky);
   delay(5000);
-  
+  */
+  int thumb_map = map(val_thumb, 470, 550, 255, 0 );
+  int index_map = map(val_index, 460, 570, 255, 0);
+  int fuck_map = map(val_fuck, 460, 570, 255, 0 );
+  int ring_map = map(val_ring, 470, 580, 255, 0 );
+  int pinky_map = map(val_pinky, 480, 600, 255, 0 );
 
-  int thumb_map = (val_thumb, 490, 530, 255, 0 );
-  int index_map = (val_index, 480, 550, 255, 0);
-  int fuck_map = (val_fuck, 480, 550, 255, 0 );
-  int ring_map = (val_ring, 490, 560, 255, 0 );
-  int pinky_map = (val_pinky, 500, 580, 255, 0 );
+  if(thumb_map>255)
+    thumb_map=255;
+  if(thumb_map<0)
+    thumb_map=0;
+    
+  if(index_map>255)
+    index_map=255;
+  if(index_map<0)
+    index_map=0;
+    
+  if(fuck_map>255)
+    fuck_map=255;
+  if(fuck_map<0)
+    fuck_map=0;
+    
+  if(ring_map>255)
+    ring_map=255;
+  if(ring_map<0)
+    ring_map=0;
+    
+  if(pinky_map>255)
+    pinky_map=255;
+  if(pinky_map<0)
+    pinky_map=0;
   
   Serial.println("Thumb mapped");
   Serial.println(thumb_map);
@@ -63,11 +87,11 @@ void loop() {
   Serial.println(ring_map);
   Serial.println("pinky mapped");
   Serial.println(pinky_map);
-  delay(5000);
+  //delay(5000);
   
-  analogWrite(servo_thumb, val_thumb);
-  analogWrite(servo_index, val_index);
-  analogWrite(servo_fuck, val_fuck);
-  analogWrite(servo_ring, val_ring);
-  analogWrite(servo_pinky, val_pinky);
+  analogWrite(servo_thumb, thumb_map);
+  analogWrite(servo_index, index_map);
+  analogWrite(servo_fuck, fuck_map);
+  analogWrite(servo_ring, ring_map);
+  analogWrite(servo_pinky, pinky_map);
 }
