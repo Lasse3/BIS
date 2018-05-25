@@ -43,11 +43,11 @@ void loop() {
     val_ring = analogRead(sensor_ring);
     val_pinky = analogRead(sensor_pinky); 
 
-    int thumb_map = map(val_thumb, 470, 550, 45, 135 );
-    int index_map = map(val_index, 460, 570, 45, 135 );
-    int fuck_map = map(val_fuck, 460, 570, 45, 135 );
-    int ring_map = map(val_ring, 470, 580, 45, 135 );
-    int pinky_map = map(val_pinky, 480, 600, 45, 135 );
+    int thumb_map = map(val_thumb, 470, 560, 45, 135 );
+    int index_map = map(val_index, 460, 570, 135, 45 );
+    int fuck_map = map(val_fuck, 480, 560, 135, 45 );
+    int ring_map = map(val_ring, 480, 560, 135, 45 );
+    int pinky_map = map(val_pinky, 480, 600, 135, 70 );
 
     if(thumb_map>135)
       thumb_map=135;
@@ -61,7 +61,7 @@ void loop() {
     
     if(fuck_map>135)
       fuck_map=135;
-    if(fuck_map<45)
+    if(fuck_map<45) 
       fuck_map=45;
     
     if(ring_map>135)
@@ -73,11 +73,23 @@ void loop() {
       pinky_map=135;
     if(pinky_map<45)
       pinky_map=45;
-  
+
+    
     servo_thumb.write(thumb_map);
     servo_index.write(index_map);
     servo_fuck.write(fuck_map);
     servo_ring.write(ring_map);
     servo_pinky.write(pinky_map);
-
+    /*
+    Serial.println("Thumb");
+    Serial.println(thumb_map);
+    Serial.println("Index");
+    Serial.println(index_map);
+    Serial.println("Middle");
+    Serial.println(fuck_map);
+    Serial.println("Ring");
+    Serial.println(ring_map);
+    Serial.println("Pinky");
+    Serial.println(pinky_map);
+    */  
 }
